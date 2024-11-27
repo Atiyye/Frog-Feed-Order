@@ -6,8 +6,14 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     [SerializeField] private Flexalon.FlexalonGridLayout Grid;
+    [SerializeField] private Tile tilePrefab;
+    [SerializeField] private TileStateSO[] tileStates;
 
-    public void Start()
+    private List<Tile> tiles = new List<Tile>();
+    
+    private void Awake()
     {
+        Grid._rows = 5;
+        Grid._columns = 5;
     }
 }

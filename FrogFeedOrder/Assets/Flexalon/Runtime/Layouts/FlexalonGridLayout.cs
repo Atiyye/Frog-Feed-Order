@@ -31,7 +31,7 @@ namespace Flexalon
         }
 
         [SerializeField, Min(1)]
-        private uint _columns = 3;
+        public uint _columns = 3;
         /// <summary> The number of columns in the grid. </summary>
         public uint Columns
         {
@@ -40,9 +40,9 @@ namespace Flexalon
         }
 
         [SerializeField, Min(1)]
-        private uint _rows = 3;
+        public uint _rows = 3;
         /// <summary> The number of rows in the grid. </summary>
-        public uint Rows
+        public  uint Rows
         {
             get { return _rows; }
             set { _rows = System.Math.Max(value, 1); _node.MarkDirty(); }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7691395241986178496}
   - component: {fileID: 9150325932861695079}
   - component: {fileID: 2672655451309693025}
+  - component: {fileID: 7832120509582755193}
   m_Layer: 0
   m_Name: Grid_Cell
   m_TagString: Untagged
@@ -91,6 +92,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.75261736, y: 0.7583978, z: 0.99979216}
   m_Center: {x: -0.005348921, y: 0.009253621, z: 0}
+--- !u!114 &7832120509582755193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559223877814846907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03590a58c399fb04ba59c1b69b3f5983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7730096502515494292
 GameObject:
   m_ObjectHideFlags: 0
