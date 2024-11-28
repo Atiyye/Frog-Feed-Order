@@ -7,6 +7,8 @@ public class TileGrid : MonoBehaviour
 {
     public Cell[] cells { get; private set; }
 
+    public static TileGrid Instance { get; private set; }
+    
     [SerializeField] private Flexalon.FlexalonGridLayout Grid;
     [SerializeField] private GameObject cell;
     private int size => cells.Length;
@@ -14,6 +16,11 @@ public class TileGrid : MonoBehaviour
     private int width => int.Parse(Grid.Columns.ToString());
     
     private int cellCount = 0;
+    
+    private void Awake()
+    {
+        Instance = this;
+    }
     
     private void Start()
     {
@@ -34,18 +41,33 @@ public class TileGrid : MonoBehaviour
         cells = GetComponentsInChildren<Cell>();
     }
     
-    private void CreateCellCoordinate()
+    public void CreateCellCoordinate()
     {
         for (int i = 0; i < height; i++)
         {
-            // X AXIS
             for (int j = 0; j < width; j++)
             {
                 cells[j].coordinates = new Vector3Int(j,i);
+                Debug.Log(cells[j].coordinates);
             }
         }
     }
     
+    public Cell GetRandomCell()
+    {
+        int index = Random.Range(0, cells.Length);
+       // int startingIndex = index;
+        //
+        // while (cells[index].isOccupied) // eğer cells[index] doluysa
+        // {
+        //     index++;
+        //     if (index >= cells.Length) index = 0;
+        //     if (index == startingIndex) return null; // zaten tüm tablom dolu demek olur
+        // }
+        //
+        return cells[index];
+    }
+
     public void DeleteAllChildren()
     {
         foreach (Transform child in transform)

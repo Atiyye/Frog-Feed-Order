@@ -98,3 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileMaterial: {fileID: 2100000, guid: ed615c9e9414a5444b253665aed2b3c4, type: 2}
+  tileContent: {fileID: 0}
+  rotationAngle: 000000005a000000b40000000e010000

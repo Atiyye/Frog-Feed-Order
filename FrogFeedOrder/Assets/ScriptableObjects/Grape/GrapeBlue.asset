@@ -15,3 +15,4 @@ MonoBehaviour:
   tileMaterial: {fileID: 2100000, guid: bffc3fced96f11a47abf0d5e96704794, type: 2}
   objectMaterial: {fileID: 2100000, guid: 02f9a0baeeeefa8498c0f507024ce2a4, type: 2}
   tileContent: {fileID: 5246268245525639519, guid: f6b44f265ed93ea438851c50a4cdc2d2, type: 3}
+  objectType: Grape

@@ -504,7 +504,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Grid: {fileID: 43367783}
   tilePrefab: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
-  tileStates: []
+  tileStates:
+  - {fileID: 11400000, guid: d893d154c89fecd4fbf4f0f9481bee70, type: 2}
+  - {fileID: 11400000, guid: 98af3c8efd3eb184fa0a43304c408a42, type: 2}
+  - {fileID: 11400000, guid: cc5a9740ca698f546beffd7ae982c361, type: 2}
+  - {fileID: 11400000, guid: 7695685f9c0807e46818db43dbf2d901, type: 2}
+  - {fileID: 11400000, guid: 0c8b7d78e919f4643a7362b9988ed1e3, type: 2}
+  - {fileID: 11400000, guid: a696288d58af9ba409ff5e00db819ff7, type: 2}
+  - {fileID: 11400000, guid: 7106fbfcef980994584d276d3c4a38f7, type: 2}
+  - {fileID: 11400000, guid: ee86dcde33cc5ed4abb67131ff31bba4, type: 2}
+  - {fileID: 11400000, guid: 80105f7e3e305744aae7dbe36e6c4056, type: 2}
+  - {fileID: 11400000, guid: 26bf7df6cadf3414e986547184df4f29, type: 2}
+  - {fileID: 11400000, guid: 9372c08bce7ca7a49be359d06eb22075, type: 2}
+  - {fileID: 11400000, guid: f4801c0d2c8709f42b8bf7be8bae5d40, type: 2}
 --- !u!1 &1620296868
 GameObject:
   m_ObjectHideFlags: 0

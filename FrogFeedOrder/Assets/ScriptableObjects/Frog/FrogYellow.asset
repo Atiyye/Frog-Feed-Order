@@ -15,3 +15,4 @@ MonoBehaviour:
   tileMaterial: {fileID: 2100000, guid: 994ba1306eab27044a62f433a2530db5, type: 2}
   objectMaterial: {fileID: 2100000, guid: f618c750d2c94914e93b28982ca5ab4d, type: 2}
   tileContent: {fileID: 493031938173816861, guid: 95cdf83dc3af1d94480c546b004ca1c3, type: 3}
+  objectType: Frog

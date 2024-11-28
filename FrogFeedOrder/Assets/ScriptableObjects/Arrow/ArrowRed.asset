@@ -15,3 +15,4 @@ MonoBehaviour:
   tileMaterial: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
   objectMaterial: {fileID: 2100000, guid: fc3fe8eda37a70e458f097704cb4f90a, type: 2}
   tileContent: {fileID: 8424999381301339401, guid: 71ab061ee5a0ab748999f77532e69283, type: 3}
+  objectType: Arrow

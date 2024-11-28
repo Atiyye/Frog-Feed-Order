@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Consts : MonoBehaviour
+public static class Consts 
 {
-    // Start is called before the first frame update
-    void Start()
+    public struct Type
     {
-        
+        public const string Frog = "Frog";
+        public const string Arrow = "Arrow";
+        public const string Grape = "Grape";
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public struct Count
     {
-        
+        public const int typeCount = 3;
+        public const int gridMinChild = 2;
+    }
+    public struct PosNumber
+    {
+        public const float yPos = 0.02f;
+        public const float zPos = 0.01f;
     }
 }

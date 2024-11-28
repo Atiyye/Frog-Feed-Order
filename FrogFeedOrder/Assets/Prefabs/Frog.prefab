@@ -105,6 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 980739371432250023}
+  - component: {fileID: 7362958590243932424}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Untagged
@@ -129,6 +130,118 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &7362958590243932424
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493031938173816861}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 87de65835c8f84646a304113f295517d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: -5741174448488666723, guid: 729e0e9ff5eb3f745ba633a53405c4d7, type: 3}
+  m_Bones:
+  - {fileID: 3862527059575031479}
+  - {fileID: 2145152737776696750}
+  - {fileID: 3420697891353329970}
+  - {fileID: 1685988118529283449}
+  - {fileID: 5057604880122087589}
+  - {fileID: 6028260984998285636}
+  - {fileID: 2659794549489988347}
+  - {fileID: 1835403234806081449}
+  - {fileID: 1773889716579149270}
+  - {fileID: 6891262410977989153}
+  - {fileID: 3896343296329011009}
+  - {fileID: 1085853673152965288}
+  - {fileID: 8076120596298009721}
+  - {fileID: 5395019582726429357}
+  - {fileID: 3028834040841150650}
+  - {fileID: 2671427934662602510}
+  - {fileID: 675356127385007920}
+  - {fileID: 8048674689417058737}
+  - {fileID: 1038806679105833290}
+  - {fileID: 5175330153041419029}
+  - {fileID: 4198440465375487036}
+  - {fileID: 2450403571885912841}
+  - {fileID: 6998754173052078221}
+  - {fileID: 4869960308809298381}
+  - {fileID: 3926255339706462834}
+  - {fileID: 1382716153852912354}
+  - {fileID: 3886296392860178316}
+  - {fileID: 6600126174630852197}
+  - {fileID: 2477211866690473201}
+  - {fileID: 1676945311816501597}
+  - {fileID: 8381200506667460402}
+  - {fileID: 7829405034170442193}
+  - {fileID: 8318329282521407198}
+  - {fileID: 6720485089436796033}
+  - {fileID: 8892331575077175482}
+  - {fileID: 3609219576999807233}
+  - {fileID: 554261537205945355}
+  - {fileID: 7888426018658922720}
+  - {fileID: 3005166392877640110}
+  - {fileID: 3563968484732504300}
+  - {fileID: 2932831825332658818}
+  - {fileID: 3434098268163514381}
+  - {fileID: 6122503879817326787}
+  - {fileID: 6494565821762338910}
+  - {fileID: 6397011299268095623}
+  - {fileID: 1400330150790007101}
+  - {fileID: 1457567365899230273}
+  - {fileID: 4893091993242686777}
+  - {fileID: 4348293405430681979}
+  - {fileID: 2774952226956023163}
+  - {fileID: 4462249487089874163}
+  - {fileID: 833562466099847876}
+  - {fileID: 8158154656449926415}
+  - {fileID: 6184812805199058175}
+  - {fileID: 6830376174059658996}
+  - {fileID: 4815168176204507248}
+  - {fileID: 2590783607714681943}
+  - {fileID: 1119797773814274692}
+  m_BlendShapeWeights:
+  - 0
+  m_RootBone: {fileID: 2671427934662602510}
+  m_AABB:
+    m_Center: {x: -0.000002614921, y: 0.00032456405, z: -0.0004535336}
+    m_Extent: {x: 0.0043301433, y: 0.003914163, z: 0.0031607433}
+  m_DirtyAABB: 0
 --- !u!1 &679894512722692883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,7 +2584,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9211994525451127604}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
