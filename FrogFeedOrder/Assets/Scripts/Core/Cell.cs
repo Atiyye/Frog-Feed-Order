@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,5 +10,12 @@ public class Cell : MonoBehaviour
 
     public bool isEmpty => tile == null; 
     
-    public bool isOccupied => tile != null; 
+    public bool isOccupied => tile != null;
+
+    public string coordinate;
+
+    private void Start()
+    {
+        coordinate = coordinates.ToString();
+    }
 }

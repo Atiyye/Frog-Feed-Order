@@ -43,12 +43,14 @@ public class TileGrid : MonoBehaviour
     
     public void CreateCellCoordinate()
     {
-        for (int i = 0; i < height; i++)
+        
+        for (int y = 0; y < height; y++)
         {
-            for (int j = 0; j < width; j++)
+            for (int x = 0; x < width; x++)
             {
-                cells[j].coordinates = new Vector3Int(j,i);
-                Debug.Log(cells[j].coordinates);
+                int index = y * width + x; 
+                cells[index].coordinates = new Vector3Int(x,y);
+                Debug.Log(cells[x].coordinates);
             }
         }
     }

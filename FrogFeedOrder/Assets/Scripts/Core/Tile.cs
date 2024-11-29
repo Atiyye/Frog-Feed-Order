@@ -9,18 +9,19 @@ public class Tile : MonoBehaviour
 {
     public static Tile Instance { get; private set; }
     public TileStateSO tileState { get; private set; }
+    
+    private RandomRotate rotate;
     public Cell cell { get; private set; }
 
     [SerializeField] private Material tileMaterial;
     [SerializeField] private GameObject tileContent;
-    [SerializeField] private List<int> rotationAngle = new List<int>();
     
     private void Awake()
     {
         Instance = this;
+        rotate = GetComponentInChildren<RandomRotate>();
     }
-    
-    public void SetState(TileStateSO tileState)
+    public void SetState(TileStateSO tileState,Cell cell,uint column,uint row)
     {
         this.tileState = tileState;
         
@@ -28,8 +29,10 @@ public class Tile : MonoBehaviour
         
         tileContent = Instantiate(tileState.tileContent, transform);
         ChangeMaterial(tileContent.gameObject,tileState.objectMaterial);
+        
+        rotate.ContentRotation(tileContent.gameObject, tileState.objectType,
+            cell.coordinates,column,row);
     }
-    
     private void ChangeMaterial(GameObject gameObject,Material material)
     {
         if (gameObject != null && material != null)
@@ -42,23 +45,6 @@ public class Tile : MonoBehaviour
             }
         }
     }
-
-    public void ContentRotation(GameObject content, String contentType)
-    {
-        if (contentType != Consts.Type.Grape)
-        {
-            content.transform.Rotate(0f, rotationAngle[RandomRotation()], 0f);
-        }
-        else content.transform.rotation = Quaternion.identity;
-    }
-    
-    private int RandomRotation()
-    {
-       int rotation = Random.Range(0, rotationAngle.Count);
-       Debug.Log(rotationAngle[rotation]);
-       return rotation;
-    }
-    
     public void SpawnTile(Cell cell)
     {
         if (cell.transform.childCount > Consts.Count.gridMinChild)
@@ -67,6 +53,9 @@ public class Tile : MonoBehaviour
             
             transform.position = new Vector3(cell.tile.transform.position.x, cell.tile.transform.position.y + Consts.PosNumber.yPos,
                 cell.tile.transform.position.z - Consts.PosNumber.zPos);
+            
+            this.cell = cell;
+            this.cell.tile = this;
         }
         else
         {

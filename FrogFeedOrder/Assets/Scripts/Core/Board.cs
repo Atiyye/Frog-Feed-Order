@@ -2,24 +2,31 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Board : MonoBehaviour
 {
     [SerializeField] private Flexalon.FlexalonGridLayout Grid;
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private TileStateSO[] tileStates;
+  
 
     private List<Tile> tiles = new List<Tile>();
 
     private TileGrid grid;
+    
     private int objectTypeCount;
+
+    public uint column = 4;
+    public uint row = 4;
     
     private void Awake()
     {
         grid = GetComponentInChildren<TileGrid>();
+       
         
-        Grid._rows = 4;
-        Grid._columns = 4;
+        Grid._rows = column;
+        Grid._columns = row;
 
         objectTypeCount = tileStates.Length / Consts.Count.typeCount;
     }
@@ -36,19 +43,9 @@ public class Board : MonoBehaviour
             Cell randomCell = grid.GetRandomCell();
             
             Tile tile = Instantiate(tilePrefab, randomCell.transform);
-            tile.SetState(tileStates[i]);
             tile.SpawnTile(randomCell);
+            tile.SetState(tileStates[i],randomCell,column,row);
             tiles.Add(tile);
-        }
-    }
-    
-    private void MoveTiles(Vector3Int direction, int startX, int incrementX, int startY, int incrementY)
-    {
-        bool isChanged = false;
-
-        for (int i = 0; i < grid.transform.childCount; i++)
-        {
-            Transform child = grid.transform.GetChild(i);
         }
     }
 }
