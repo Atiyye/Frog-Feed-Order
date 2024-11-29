@@ -19,10 +19,10 @@ public static class Consts
     }
     public struct Rotate
     {
-        public const int left = 270;
-        public const int right = 90;
-        public const int down = 180;
-        public const int up = 0;
+        public const int left = 90;
+        public const int right = 270;
+        public const int down = 0;
+        public const int up = 180;
     }
     
     public struct Coordinates
