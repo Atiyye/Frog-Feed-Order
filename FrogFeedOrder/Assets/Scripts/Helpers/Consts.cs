@@ -9,6 +9,7 @@ public static class Consts
     
     public struct Count
     {
+        public const int colorCount = 4;
         public const int typeCount = 3;
         public const int gridMinChild = 2;
     }

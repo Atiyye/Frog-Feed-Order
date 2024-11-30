@@ -5,8 +5,8 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class RandomRotate : MonoBehaviour
-{ 
-    [SerializeField] public List<int> rotationAngle = new List<int>();
+{
+    [SerializeField] public List<int> rotationAngle;
 
     public void ContentRotation(GameObject content, String contentType, Vector3Int coordinate,uint column,uint row)
     {
