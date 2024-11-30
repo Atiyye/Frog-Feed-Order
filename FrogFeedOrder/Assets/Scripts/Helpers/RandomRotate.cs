@@ -7,24 +7,13 @@ using Random = UnityEngine.Random;
 public class RandomRotate : MonoBehaviour
 { 
     [SerializeField] public List<int> rotationAngle = new List<int>();
-    private void Awake()
-    {
-        //board = GetComponentInChildren<Board>();
-       
-    }
 
     public void ContentRotation(GameObject content, String contentType, Vector3Int coordinate,uint column,uint row)
     {
         if (contentType != Consts.Type.grape)
         {
             RandomRotation(coordinate,column,row);
-            float rotationIndex = rotationAngle[CreateRotate()];
-            
-            Debug.LogError("coordinate: "+coordinate);
-            content.transform.localRotation = Quaternion.Euler(0, rotationIndex, 0);
-            
-;            Debug.LogError("Local Euler Angles: " + content.transform.eulerAngles);
-            Debug.LogError("Global Rotation: " + content.transform.rotation.eulerAngles);
+            content.transform.localRotation = Quaternion.Euler(0, rotationAngle[CreateRotate()], 0);
         }
         else content.transform.localRotation = Quaternion.identity;
     }
@@ -44,26 +33,16 @@ public class RandomRotate : MonoBehaviour
      private void CoordinateControl(Vector3Int coordinate,uint column,uint row)
     {
         if (coordinate.x == Consts.Coordinates.start)
-        {
             rotationAngle.Remove(Consts.Rotate.left);
-        }
 
         if (coordinate.y == Consts.Coordinates.start)
-        {
             rotationAngle.Remove(Consts.Rotate.up);
-        }
 
         if (coordinate.x == column - 1)
-        {
             rotationAngle.Remove(Consts.Rotate.right);
-        }
 
         if (coordinate.y == row - 1)
-        {
             rotationAngle.Remove(Consts.Rotate.down);
-        }
-        
-        
     }
 
     private void RotateListClear()
@@ -73,6 +52,5 @@ public class RandomRotate : MonoBehaviour
         rotationAngle.Add(Consts.Rotate.right);
         rotationAngle.Add(Consts.Rotate.up);
         rotationAngle.Add(Consts.Rotate.left);
-        rotationAngle.Sort();
     }
 }

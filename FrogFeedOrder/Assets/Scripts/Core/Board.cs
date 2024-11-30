@@ -10,8 +10,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private TileStateSO[] tileStates;
   
-
-    private List<Tile> tiles = new List<Tile>();
+    [SerializeField] private List<Tile> tiles = new List<Tile>();
 
     private TileGrid grid;
     
@@ -24,7 +23,6 @@ public class Board : MonoBehaviour
     {
         grid = GetComponentInChildren<TileGrid>();
        
-        
         Grid._rows = column;
         Grid._columns = row;
 
