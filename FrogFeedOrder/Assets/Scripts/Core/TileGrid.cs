@@ -6,7 +6,6 @@ using UnityEngine;
 public class TileGrid : MonoBehaviour
 {
     public Cell[] cells { get; private set; }
-
     public static TileGrid Instance { get; private set; }
     
     [SerializeField] private Flexalon.FlexalonGridLayout Grid;
@@ -58,15 +57,6 @@ public class TileGrid : MonoBehaviour
     public Cell GetRandomCell()
     {
         int index = Random.Range(0, cells.Length);
-       // int startingIndex = index;
-        //
-        // while (cells[index].isOccupied) // eğer cells[index] doluysa
-        // {
-        //     index++;
-        //     if (index >= cells.Length) index = 0;
-        //     if (index == startingIndex) return null; // zaten tüm tablom dolu demek olur
-        // }
-        //
         return cells[index];
     }
 

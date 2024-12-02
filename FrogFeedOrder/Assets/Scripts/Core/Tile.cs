@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour
     public static Tile Instance { get; private set; }
     public TileStateSO tileState { get; private set; }
     
-    private RandomRotate rotate;
+    public RandomRotate rotate;
     public Cell cell { get; private set; }
 
     [SerializeField] private Material tileMaterial;
@@ -21,7 +21,7 @@ public class Tile : MonoBehaviour
         Instance = this;
         rotate = GetComponentInChildren<RandomRotate>();
     }
-    public void SetState(TileStateSO tileState,Cell cell,uint column,uint row)
+    public void SetState(TileStateSO tileState,Cell cell,uint column,uint row,int nodeDirection)
     {
         this.tileState = tileState;
         
@@ -31,7 +31,7 @@ public class Tile : MonoBehaviour
         ChangeMaterial(tileContent.gameObject,tileState.objectMaterial);
         
         rotate.ContentRotation(tileContent.gameObject, tileState.objectType,
-            cell.coordinates,column,row);
+            cell.coordinates,column,row,nodeDirection);
     }
     private void ChangeMaterial(GameObject gameObject,Material material)
     {

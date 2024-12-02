@@ -30,4 +30,12 @@ public static class Consts
     {
         public const int start = 0;
     }
+    
+    public struct Direction
+    {
+        public const string left = "Left";
+        public const string right = "Right";
+        public const string down = "Down";
+        public const string up = "Up";
+    }
 }
