@@ -30,6 +30,7 @@ public class Board : MonoBehaviour
     private int nodeDirection=0;
     private Cell randomCell=null;
     private int matchingCellCount;
+    private Cell oldFoundCell;
 
     private void Awake()
     {
@@ -72,18 +73,37 @@ public class Board : MonoBehaviour
     {
         for (int j = 0; j < RandomNodeLength(); j++)
         {
-            randomCell = NodeDirection(randomCell);
+            Cell foundCell = NodeDirection(randomCell);
             int percent = Random.Range(0, 100);
-
-            if (percent <= 80 || j == RandomNodeLength() - 1)
+            if (foundCell != randomCell)
             {
-                CreateContent(i, randomCell, grapeStates);
+                randomCell = foundCell;
+                if (percent <= 90 || j == RandomNodeLength() - 1)
+                {
+                    CreateContent(i, randomCell, grapeStates);
+                }
+                else if (percent > 90 || j != RandomNodeLength() - 1) 
+                {
+                    Debug.LogError("arrowStates");
+                    CreateContent(i, randomCell, arrowStates);
+                } 
             }
             else
             {
-                CreateContent(i, randomCell, arrowStates);
-            } 
-            
+                if (j < RandomNodeLength() - 1)
+                {
+                    Debug.LogError("arrowStates değişti");
+                    Transform lastChild = oldFoundCell.transform.GetChild(oldFoundCell.transform.childCount - 1);
+                    Destroy(lastChild.gameObject);
+                    node.Remove(node[node.Count - 1]);
+                    tiles.Remove(tiles[tiles.Count - 1]);
+                    CreateContent(i, oldFoundCell, arrowStates);
+                }
+                else
+                {
+                   break;
+                }
+            }
         }
     }
 
@@ -94,7 +114,10 @@ public class Board : MonoBehaviour
         tile.SetState(tileStateList[i],randomCell,Grid._columns,Grid._rows,nodeDirection);
         node.Add(tileStateList[i]);
         tiles.Add(tile);
-        nodeDirection = tile.rotate.direction;
+        if (tileStateList != grapeStates)
+        {
+            nodeDirection = tile.rotate.direction;
+        }
     }
     
     private int RandomNodeLength()
@@ -102,8 +125,8 @@ public class Board : MonoBehaviour
         int height = int.Parse(Grid.Rows.ToString());
         int width = int.Parse(Grid.Columns.ToString());
 
-        int maxLenght = (width * height * Consts.Count.colorCount) - 1;
-        int nodeLenght = Random.Range(height, maxLenght);
+        int maxLenght = (width * 2 ) - 1;
+        int nodeLenght = Random.Range(width, maxLenght);
         return nodeLenght;
     }
     
@@ -139,9 +162,10 @@ public class Board : MonoBehaviour
             newCoordinates = randomCell.coordinates + Vector3Int.left;
         else if(nodeDirection == Consts.Rotate.right)
             newCoordinates = randomCell.coordinates + Vector3Int.right;
-
         
         Cell foundCell = grid.cells.FirstOrDefault(obj => obj.coordinates == newCoordinates);
-        return foundCell;
+        if (foundCell != null) 
+            oldFoundCell = foundCell;
+        return foundCell ?? randomCell;
     }
 }
