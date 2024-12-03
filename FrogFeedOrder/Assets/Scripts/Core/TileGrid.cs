@@ -7,7 +7,7 @@ public class TileGrid : MonoBehaviour
 {
     public static TileGrid Instance { get; private set; }
     
-    [SerializeField] private List<Cell> cells;
+    [SerializeField] public List<Cell> cells;
     [SerializeField] public List<Tile> blueTiles;
     [SerializeField] public List<Tile> greenTiles;
     [SerializeField] public List<Tile> yellowTiles;

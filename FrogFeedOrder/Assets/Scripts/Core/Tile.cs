@@ -13,7 +13,7 @@ public class Tile : MonoBehaviour
     public RandomRotate rotate;
     public Cell cell { get; private set; }
 
-    [SerializeField] private Material tileMaterial;
+    [SerializeField] public Material tileMaterial;
     [SerializeField] private GameObject tileContent;
     
     private void Awake()
