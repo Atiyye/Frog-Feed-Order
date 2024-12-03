@@ -19,19 +19,6 @@ public class Tile : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        rotate = GetComponentInChildren<RandomRotate>();
     }
     
-    public void ChangeMaterial(GameObject gameObject,Material material)
-    {
-        if (gameObject != null && material != null)
-        {
-            Renderer renderer = gameObject.GetComponent<Renderer>();
-            
-            if (renderer != null)
-            {
-                renderer.material = material;
-            }
-        }
-    }
 }

@@ -1,19 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private int levelCount;
+    [SerializeField] private List<GameObject> levels;
+    
     void Start()
     {
-        
+        CreateLevel();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CreateLevel()
     {
-        
-    }
+        Instantiate(LevelManager.Instance.levelList[levelCount], LevelManager.Instance.gameObject.transform);
 
+    }
 }
