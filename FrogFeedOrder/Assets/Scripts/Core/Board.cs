@@ -17,7 +17,10 @@ public class Board : MonoBehaviour
     private GameObject foundObject;
     private GameObject cell;
     private Vector3Int coordinates;
+    private Vector3Int newCoordinates;
     private Material tileMaterial;
+    private Transform newTile;
+    private int nodeDirection;
     
     private void Awake()
     {
@@ -29,48 +32,71 @@ public class Board : MonoBehaviour
 
     public void FeedFrog(int direction,GameObject tile)
     {
+        nodeDirection = direction;
+        newCoordinates = coordinates;
+        
         cell = tile.transform.parent.gameObject;
         coordinates = cell.GetComponent<Cell>().coordinates;
         tileMaterial = tile.GetComponent<Tile>().tileMaterial;
-        Debug.LogError(tileMaterial);
-
-        NodeDirection(coordinates, direction, tileMaterial);
-    }
     
-    private void NodeDirection(Vector3Int coordinates, int nodeDirection, Material material)
-    {
-        Vector3Int newCoordinates = coordinates;
-        if (nodeDirection == Consts.Rotate.up)
-        {
-            Transform newTile;
-            newCoordinates = coordinates + Vector3Int.down;
-            Debug.LogError("up: "+newCoordinates);
-            newTile = GetLastChild(GetObjectAtCoordinates(newCoordinates).transform);
-            if (material == newTile.GetComponent<Tile>().tileMaterial)
-            {
-                //Animasyon
-            }
-            else
-            {
-                //animasyon
-            } 
+        NodeDirection(tileMaterial,tile);
+    }
 
-        }
-        else if (nodeDirection == Consts.Rotate.down)
-            // Up and down changed places because the axis was rotated
+    private void NodeDirection(Material material, GameObject tile)
+    {
+        newCoordinates = coordinates;
+       
+        for (int i = 0; i < grid.NodeCount(tile) - 1; i++)
         {
-            newCoordinates = coordinates + Vector3Int.up;
-            Debug.LogError("down: "+newCoordinates);
+            bool isFrog = GetLastChild(tile.transform).name == Consts.Type.frog;
+            Vector3Int coord = GetCoord(nodeDirection, isFrog);
+            
+            if (!LastChildControl(material,coord)) break;
+            
         }
-        else if (nodeDirection == Consts.Rotate.left)
+    }
+
+    private bool  LastChildControl(Material material,Vector3Int coord)
+    {
+        newCoordinates += coord;
+        Debug.LogError("coord: "+newCoordinates);
+        
+        newTile = GetLastChild(GetObjectAtCoordinates(newCoordinates).transform);
+        
+        if (material == newTile.GetComponent<Tile>().tileMaterial)
         {
-            newCoordinates = coordinates + Vector3Int.left;
-            Debug.LogError("left: "+newCoordinates);
+            Debug.LogError("material aynı");
+            if (GetLastChild(newTile).name == Consts.Type.arrow) 
+            {
+                nodeDirection = int.Parse(GetLastChild(newTile).gameObject.transform.localRotation.eulerAngles.y.ToString());
+                nodeDirection = (Consts.Rotate.left + nodeDirection) % 360;
+            }
+            //Animasyon
+            return true;
         }
-        else if (nodeDirection == Consts.Rotate.right)
+        else
         {
-            newCoordinates = coordinates + Vector3Int.right;
-            Debug.LogError("right: "+newCoordinates);
+            Debug.LogError("material farklı");
+            newCoordinates = coordinates;
+            //animasyon
+            return false; 
+        } 
+    }
+
+    private Vector3Int GetCoord(int direction, bool isFrog)
+    {
+        switch (direction)
+        {
+            case Consts.Rotate.up:
+                return isFrog ? Vector3Int.down : Vector3Int.up;
+            case Consts.Rotate.down:
+                return isFrog ? Vector3Int.up : Vector3Int.down;
+            case Consts.Rotate.left:
+                return Vector3Int.left;
+            case Consts.Rotate.right:
+                return Vector3Int.right;
+            default:
+                return Vector3Int.zero; 
         }
     }
     

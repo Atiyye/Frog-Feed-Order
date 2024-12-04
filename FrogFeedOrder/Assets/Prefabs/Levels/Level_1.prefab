@@ -78,7 +78,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grid: {fileID: 7027637070045771176}
-  node: []
 --- !u!1 &8382072864410358597
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +444,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 9df5d31b27202654fb1983ccc7ef6b89, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bffc3fced96f11a47abf0d5e96704794, type: 2}
@@ -645,6 +648,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
@@ -732,6 +739,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Red
+      objectReference: {fileID: 0}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
@@ -961,6 +972,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 680ff2648028f8d4893b3d1e81de1334, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 680ff2648028f8d4893b3d1e81de1334, type: 2}
@@ -1056,6 +1071,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9df5d31b27202654fb1983ccc7ef6b89, type: 2}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
@@ -1443,6 +1462,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
@@ -1755,6 +1778,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 994ba1306eab27044a62f433a2530db5, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 994ba1306eab27044a62f433a2530db5, type: 2}
@@ -1913,6 +1940,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 994ba1306eab27044a62f433a2530db5, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 994ba1306eab27044a62f433a2530db5, type: 2}
@@ -2001,6 +2032,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
@@ -2088,6 +2123,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 994ba1306eab27044a62f433a2530db5, type: 2}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Yellow
+      objectReference: {fileID: 0}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
@@ -2321,6 +2360,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 9df5d31b27202654fb1983ccc7ef6b89, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bffc3fced96f11a47abf0d5e96704794, type: 2}
@@ -2408,6 +2451,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Red
+      objectReference: {fileID: 0}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
@@ -2612,6 +2659,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9df5d31b27202654fb1983ccc7ef6b89, type: 2}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
@@ -3810,6 +3861,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 9df5d31b27202654fb1983ccc7ef6b89, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 680ff2648028f8d4893b3d1e81de1334, type: 2}
@@ -3963,6 +4018,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 680ff2648028f8d4893b3d1e81de1334, type: 2}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Green
+      objectReference: {fileID: 0}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
@@ -4234,6 +4293,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: bffc3fced96f11a47abf0d5e96704794, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bffc3fced96f11a47abf0d5e96704794, type: 2}
@@ -4470,6 +4533,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 994ba1306eab27044a62f433a2530db5, type: 2}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 994ba1306eab27044a62f433a2530db5, type: 2}
@@ -4561,6 +4628,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Red
+      objectReference: {fileID: 0}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 
@@ -4985,6 +5056,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 88231f955462f914d89a60833f13d576, type: 2}
+    - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
+      propertyPath: color
+      value: Red
+      objectReference: {fileID: 0}
     - target: {fileID: 3474772240266524222, guid: 9794a24df91c0a64d8d45c8588aac523, type: 3}
       propertyPath: tileMaterial
       value: 

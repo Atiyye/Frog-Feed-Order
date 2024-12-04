@@ -31,11 +31,11 @@ public static class Consts
         public const int start = 0;
     }
     
-    public struct Direction
+    public struct Color
     {
-        public const string left = "Left";
-        public const string right = "Right";
-        public const string down = "Down";
-        public const string up = "Up";
+        public const string blue = "Blue";
+        public const string green = "Green";
+        public const string red = "Red";
+        public const string yellow = "Yellow";
     }
 }

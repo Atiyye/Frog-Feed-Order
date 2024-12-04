@@ -38,4 +38,27 @@ public class TileGrid : MonoBehaviour
         }
     }
     
+    public int NodeCount(GameObject tile)
+    {
+        int count = 0;
+        string tileColor = tile.GetComponent<Tile>().color;
+
+        switch (tileColor)
+        {
+            case Consts.Color.blue:
+                count = blueTiles.Count;
+                break;
+            case Consts.Color.red:
+                count = redTiles.Count;
+                break;
+            case Consts.Color.green:
+                count = greenTiles.Count;
+                break;
+            case Consts.Color.yellow:
+                count = yellowTiles.Count;
+                break;
+        }
+
+        return count;
+    }
 }
