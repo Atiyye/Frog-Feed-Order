@@ -112,27 +112,29 @@ public class Board : MonoBehaviour
     
     private IEnumerator DeleteNode(GameObject oldTile)
     {
-        for (int i = grid.NodeCount(oldTile).Count - 1; i >= 0; i--) 
+        List<Tile> tiles = grid.NodeCount(oldTile);
+        for (int i = tiles.Count - 1; i >= 0; i--) 
         {
             yield return new WaitForSeconds(.2f);
                 
-            Transform cell = grid.NodeCount(oldTile)[i].transform.parent;
-            grid.NodeCount(oldTile)[i].gameObject.SetActive(false);
+            Transform cell = tiles[i].transform.parent;
+            tiles[i].gameObject.SetActive(false);
             
-            if (cell.childCount > Consts.Count.gridMinChild)
+            if (GetChildCount(cell) >= Consts.Count.gridMinChild)
             {
                 Transform tile = GetLastChild(cell);
                 Transform content = tile.GetChild(tile.childCount - 1);
                 
-                Renderer renderer = tile.GetComponent<Renderer>();
+                Renderer renderer = content.GetComponent<Renderer>();
 
                 if (renderer != null)
                 {
                     Material material = renderer.material;
-                    Debug.LogError("content: "+tile.name+" color: "+material);
+                    Debug.LogError("content: "+content.name+" color: "+material);
                 }
                
                 content.gameObject.SetActive(true);
+                
             }
         }
     }
@@ -161,5 +163,20 @@ public class Board : MonoBehaviour
             }
         }
         return null;
+    }
+    
+    private int GetChildCount(Transform parent)
+    {
+        int count = parent.childCount;
+        for (int i = parent.childCount - 1; i >= 0; i--)
+        {
+            Transform child = parent.GetChild(i);
+
+            if (!child.gameObject.activeSelf)
+            {
+                count--;
+            }
+        }
+        return count;
     }
 }
