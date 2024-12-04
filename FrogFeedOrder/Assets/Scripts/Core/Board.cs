@@ -124,17 +124,8 @@ public class Board : MonoBehaviour
             {
                 Transform tile = GetLastChild(cell);
                 Transform content = tile.GetChild(tile.childCount - 1);
-                
-                Renderer renderer = content.GetComponent<Renderer>();
-
-                if (renderer != null)
-                {
-                    Material material = renderer.material;
-                    Debug.LogError("content: "+content.name+" color: "+material);
-                }
                
                 content.gameObject.SetActive(true);
-                
             }
         }
     }
