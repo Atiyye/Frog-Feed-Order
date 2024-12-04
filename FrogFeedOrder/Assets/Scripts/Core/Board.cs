@@ -45,27 +45,37 @@ public class Board : MonoBehaviour
     private void NodeDirection(Material material, GameObject tile)
     {
         newCoordinates = coordinates;
-       
-        for (int i = 0; i < grid.NodeCount(tile) - 1; i++)
+        bool isBreak = false;
+        Vector3Int coord;
+            
+        for (int i = 0; i < grid.NodeCount(tile).Count - 1; i++)
         {
             bool isFrog = GetLastChild(tile.transform).name == Consts.Type.frog;
-            Vector3Int coord = GetCoord(nodeDirection, isFrog);
-            
-            if (!LastChildControl(material,coord)) break;
-            
+            coord = GetCoord(nodeDirection, isFrog);
+
+            if (!LastChildControl(material, coord))
+            {
+                isBreak = true;
+                break;
+            }
+        }
+        
+        if (!isBreak)
+        {
+            StartCoroutine(DeleteNode(tile));
         }
     }
 
-    private bool  LastChildControl(Material material,Vector3Int coord)
+    private bool LastChildControl(Material material,Vector3Int coord)
     {
         newCoordinates += coord;
-        Debug.LogError("coord: "+newCoordinates);
+        Debug.Log("Coord: "+newCoordinates);
         
         newTile = GetLastChild(GetObjectAtCoordinates(newCoordinates).transform);
         
         if (material == newTile.GetComponent<Tile>().tileMaterial)
         {
-            Debug.LogError("material aynı");
+            Debug.Log("Material Same");
             if (GetLastChild(newTile).name == Consts.Type.arrow) 
             {
                 nodeDirection = int.Parse(GetLastChild(newTile).gameObject.transform.localRotation.eulerAngles.y.ToString());
@@ -76,7 +86,7 @@ public class Board : MonoBehaviour
         }
         else
         {
-            Debug.LogError("material farklı");
+            Debug.Log("Material Different");
             newCoordinates = coordinates;
             //animasyon
             return false; 
@@ -100,6 +110,33 @@ public class Board : MonoBehaviour
         }
     }
     
+    private IEnumerator DeleteNode(GameObject oldTile)
+    {
+        for (int i = grid.NodeCount(oldTile).Count - 1; i >= 0; i--) 
+        {
+            yield return new WaitForSeconds(.2f);
+                
+            Transform cell = grid.NodeCount(oldTile)[i].transform.parent;
+            grid.NodeCount(oldTile)[i].gameObject.SetActive(false);
+            
+            if (cell.childCount > Consts.Count.gridMinChild)
+            {
+                Transform tile = GetLastChild(cell);
+                Transform content = tile.GetChild(tile.childCount - 1);
+                
+                Renderer renderer = tile.GetComponent<Renderer>();
+
+                if (renderer != null)
+                {
+                    Material material = renderer.material;
+                    Debug.LogError("content: "+tile.name+" color: "+material);
+                }
+               
+                content.gameObject.SetActive(true);
+            }
+        }
+    }
+    
     private GameObject GetObjectAtCoordinates(Vector3Int coordinates)
     {
         foreach (var cell in grid.cells)
@@ -114,6 +151,15 @@ public class Board : MonoBehaviour
     
     private Transform GetLastChild(Transform parent)
     {
-        return parent.GetChild(parent.childCount - 1);
+        for (int i = parent.childCount - 1; i >= 0; i--)
+        {
+            Transform child = parent.GetChild(i);
+
+            if (child.gameObject.activeSelf)
+            {
+                return child;
+            }
+        }
+        return null;
     }
 }

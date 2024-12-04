@@ -33,32 +33,31 @@ public class TileGrid : MonoBehaviour
             {
                 int index = y * width + x; 
                 cells[index].coordinates = new Vector3Int(x,y);
-                Debug.Log(cells[x].coordinates);
             }
         }
     }
     
-    public int NodeCount(GameObject tile)
+    public List<Tile> NodeCount(GameObject tile)
     {
-        int count = 0;
         string tileColor = tile.GetComponent<Tile>().color;
+        List<Tile> tiles = new List<Tile>();
 
         switch (tileColor)
         {
             case Consts.Color.blue:
-                count = blueTiles.Count;
+                tiles.AddRange(blueTiles);
                 break;
             case Consts.Color.red:
-                count = redTiles.Count;
+                tiles.AddRange(redTiles);
                 break;
             case Consts.Color.green:
-                count = greenTiles.Count;
+                tiles.AddRange(greenTiles);
                 break;
             case Consts.Color.yellow:
-                count = yellowTiles.Count;
+                tiles.AddRange(yellowTiles);
                 break;
         }
 
-        return count;
+        return tiles;
     }
 }
