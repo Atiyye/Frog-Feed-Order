@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
+
 
 public class Board : MonoBehaviour
 {
@@ -12,7 +10,6 @@ public class Board : MonoBehaviour
     [Header("Grid")]
     [SerializeField] private Flexalon.FlexalonGridLayout Grid;
     
-    private LevelManager levelManager ;
     private TileGrid grid;
     private GameObject foundObject;
     private GameObject cell;
@@ -21,12 +18,12 @@ public class Board : MonoBehaviour
     private Material tileMaterial;
     private Transform newTile;
     private int nodeDirection;
+   
     
     private void Awake()
     {
         Instance = this;
         
-        levelManager = LevelManager.Instance;
         grid = GetComponentInChildren<TileGrid>();
     }
 
@@ -59,10 +56,9 @@ public class Board : MonoBehaviour
                 break;
             }
         }
-        
         if (!isBreak)
         {
-            StartCoroutine(DeleteNode(tile));
+          //  StartCoroutine(DeleteNode(tile));
         }
     }
 
@@ -81,16 +77,17 @@ public class Board : MonoBehaviour
                 nodeDirection = int.Parse(GetLastChild(newTile).gameObject.transform.localRotation.eulerAngles.y.ToString());
                 nodeDirection = (Consts.Rotate.left + nodeDirection) % 360;
             }
-            //Animasyon
+            StartCoroutine(Animation.Instance.ContentsGrowthAnimate(newTile.gameObject,nodeDirection));
             return true;
         }
         else
         {
             Debug.Log("Material Different");
             newCoordinates = coordinates;
-            //animasyon
             return false; 
         } 
+        
+        
     }
 
     private Vector3Int GetCoord(int direction, bool isFrog)
@@ -113,23 +110,29 @@ public class Board : MonoBehaviour
     private IEnumerator DeleteNode(GameObject oldTile)
     {
         List<Tile> tiles = grid.NodeCount(oldTile);
-        for (int i = tiles.Count - 1; i >= 0; i--) 
+        yield return new WaitForSeconds(tiles.Count/10);
+        
+        for (int i = tiles.Count - 1; i >= 0; i--)
         {
             yield return new WaitForSeconds(.2f);
-                
             Transform cell = tiles[i].transform.parent;
+            
+            StartCoroutine(Animation.Instance.DeleteTileAnimate(tiles[i]));
             tiles[i].gameObject.SetActive(false);
             
             if (GetChildCount(cell) >= Consts.Count.gridMinChild)
             {
                 Transform tile = GetLastChild(cell);
                 Transform content = tile.GetChild(tile.childCount - 1);
-               
+                
+                StartCoroutine(Animation.Instance.CreateContentAnimate(content));
                 content.gameObject.SetActive(true);
             }
         }
     }
-    
+
+   
+  
     private GameObject GetObjectAtCoordinates(Vector3Int coordinates)
     {
         foreach (var cell in grid.cells)
@@ -142,7 +145,7 @@ public class Board : MonoBehaviour
         return null; 
     }
     
-    private Transform GetLastChild(Transform parent)
+    public Transform GetLastChild(Transform parent)
     {
         for (int i = parent.childCount - 1; i >= 0; i--)
         {

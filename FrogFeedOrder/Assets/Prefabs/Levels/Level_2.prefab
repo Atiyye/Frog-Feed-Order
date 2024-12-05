@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1519967885301380898}
   - component: {fileID: 4357857519724409553}
+  - component: {fileID: 4238706943925794108}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -78,7 +79,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grid: {fileID: 703246224227759550}
-  node: []
+--- !u!114 &4238706943925794108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420398062290250591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7614e5ae9542d4f830b23b52317dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Grid: {fileID: 703246224227759550}
 --- !u!1 &8010405361115599292
 GameObject:
   m_ObjectHideFlags: 0

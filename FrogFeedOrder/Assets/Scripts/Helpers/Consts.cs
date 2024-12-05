@@ -12,6 +12,7 @@ public static class Consts
         public const int colorCount = 4;
         public const int typeCount = 3;
         public const int gridMinChild = 2;
+        
     }
     public struct PosNumber
     {

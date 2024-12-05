@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9157738462175138436}
   - component: {fileID: 2188658121177494570}
+  - component: {fileID: 6035804595983325062}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -75,6 +76,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a7dd1709a6241947a42c5d1a7c296d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Grid: {fileID: 7027637070045771176}
+--- !u!114 &6035804595983325062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324469435667223428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7614e5ae9542d4f830b23b52317dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Grid: {fileID: 7027637070045771176}
@@ -2798,7 +2812,7 @@ PrefabInstance:
     - target: {fileID: 6038906383902445706, guid: f6b44f265ed93ea438851c50a4cdc2d2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4c2d2efca8bf8834cbfa8c7a153ae803, type: 2}
+      objectReference: {fileID: 2100000, guid: f71614aceadfc964ab721d55c194b698, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4406,7 +4420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9196434964615954355, guid: 71ab061ee5a0ab748999f77532e69283, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.062
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 9196434964615954355, guid: 71ab061ee5a0ab748999f77532e69283, type: 3}
       propertyPath: m_LocalPosition.z
