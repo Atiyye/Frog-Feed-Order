@@ -14,4 +14,5 @@ public static class Readonly
         public static readonly Vector3 contentBigSize = new Vector3(1f, 1f, 1f);
         public static readonly Vector3 contentDelete = new Vector3(0, 0, 0);
     }
+    
 }

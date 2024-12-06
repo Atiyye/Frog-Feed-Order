@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,9 @@ public class Animation : MonoBehaviour
     private TileGrid grid;
 
     private float animationDuration = 0.3f;
-    private float tileAnimationDuration = 0.2f;
-    private float contentAnimationDuration = 0.1f;
+    private float tileAnimationDuration = 0.3f;
+    private float contentAnimationDuration = 0.3f;
+    private float contentDeleteDuration = .5f;
     private float moveDuration = 1f;
 
     private void Awake()
@@ -51,57 +53,62 @@ public class Animation : MonoBehaviour
     {
         List<Tile> tiles = grid.NodeCount(tile);
         yield return new WaitForSeconds(tiles.Count * Consts.Count.colorCount / 10f);
-      
+
         for (int i = 0; i < tiles.Count; i++)
         {
             contents.Add(Board.Instance.GetLastChild(tiles[i].transform).name);
         }
-        
+
         if (contents.Contains(Consts.Type.arrow))
         {
             int index = contents.IndexOf(Consts.Type.arrow);
             Transform targetNew = tiles[index].transform;
-            
-            for (int i = contents.Count - 1; i >= 0; i--) 
+
+            for (int i = contents.Count - 1; i > 0; i--)
             {
                 Transform target = tiles[0].transform;
                 Transform content = Board.Instance.GetLastChild(tiles[i].transform);
-            
+
                 if (contents.Contains(Consts.Type.arrow))
                 {
                     if (content.name == Consts.Type.arrow)
                     {
                         targetNew = target;
+                        TongueDeleteAnim(content,.1f);
                         yield return new WaitForSeconds(1);
                     }
 
-                    content.DOMove(targetNew.position, 1).OnComplete(() =>
+                    TongueDeleteAnim(content,.1f);
+                    content.DOMove(targetNew.position, moveDuration).OnComplete(() =>
                     {
-                        content.DOMove(target.position, 1)
+                        content.DOMove(target.position, contentDeleteDuration)
                             .OnComplete(() =>
                             {
-                                content.DOScale(0, 1);
+                                target.DOScale(0, contentDeleteDuration);
+                                content.DOScale(0, contentDeleteDuration);
                             });
                     });
-                    
                 }
             }
+
+            contents.Clear();
         }
         else
         {
-            for (int i = 0; i < contents.Count; i++)
+            for (int i = 1; i < contents.Count; i++)
             {
-
                 Transform target = tiles[0].transform;
                 Transform content = Board.Instance.GetLastChild(tiles[i].transform);
-
-                content.DOMove(target.position, 1f)
+                TongueDeleteAnim(content,.1f);
+                content.DOMove(target.position, moveDuration)
                     .OnComplete(() =>
                     {
-                        content.DOScale(0, .9f);
-                        target.DOScale(0, 1);
+                        target.DOScale(0, contentDeleteDuration);
+                        content.DOScale(0, contentDeleteDuration);
                     });
             }
+
+            contents.Clear();
         }
     }
 
@@ -117,7 +124,11 @@ public class Animation : MonoBehaviour
         if (content.name == Consts.Type.arrow)
         {
             Tongue.Instance.direction = int.Parse(content.transform.localRotation.eulerAngles.y.ToString());
-            Tongue.Instance.direction = (Consts.Rotate.left - Tongue.Instance.direction) % 360;
+            if (Tongue.Instance.direction == Consts.Rotate.left
+                || Tongue.Instance.direction == Consts.Rotate.right)
+                Tongue.Instance.direction = (Consts.Rotate.left + Tongue.Instance.direction) % 360;
+            else
+                Tongue.Instance.direction = (Consts.Rotate.left - Tongue.Instance.direction) % 360;
         }
 
         Transform tongue = content.GetChild(content.childCount - 1);
@@ -132,17 +143,9 @@ public class Animation : MonoBehaviour
                 Readonly.TongueValue.tongueCreateArrow);
     }
 
-    public IEnumerator DeleteTileAnimate(Tile tile)
-    {
-        tile.transform.DOScale(Readonly.ContentValue.contentDelete, tileAnimationDuration)
-            .OnComplete(() => { });
-        yield return new WaitForSeconds(tileAnimationDuration);
-    }
-
-    public IEnumerator CreateContentAnimate(Transform content)
-    {
-        content.transform.DOScale(Readonly.ContentValue.contentOriginalSize, contentAnimationDuration)
-            .OnComplete(() => { });
-        yield return new WaitForSeconds(contentAnimationDuration);
+    public void TongueDeleteAnim(Transform content,float duration)
+    {   
+        Transform tongue = content.GetChild(content.childCount - 1);
+        tongue.DOScale(Readonly.TongueValue.tongueDelete, duration);
     }
 }

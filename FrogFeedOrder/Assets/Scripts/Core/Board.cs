@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 
 public class Board : MonoBehaviour
 {
@@ -53,6 +53,7 @@ public class Board : MonoBehaviour
 
             if (!LastChildControl(material, coord))
             {
+                StartCoroutine(WrongFrog(newTile,i,tile));
                 isBreak = true;
                 break;
             }
@@ -60,7 +61,7 @@ public class Board : MonoBehaviour
         if (!isBreak)
         {
             StartCoroutine(Animation.Instance.ContentGatheringAnimate(tile));
-            //  StartCoroutine(DeleteNode(tile));
+            StartCoroutine(DeleteNode(tile));
         }
     }
 
@@ -106,30 +107,60 @@ public class Board : MonoBehaviour
                 return Vector3Int.zero; 
         }
     }
+
+    private IEnumerator WrongFrog(Transform newTile,int i,GameObject tile)
+    {
+        List<Tile> tiles = grid.NodeCount(tile);
+        yield return new WaitForSeconds(i-.5f);
+        Renderer renderer = GetLastChild(newTile).GetComponent<Renderer>();
+
+        if (renderer != null && renderer.material != null)
+        {
+            renderer.material.color = Color.gray;
+        }
+       
+        for (int j = i; j >= 0; j--)
+        {
+            yield return new WaitForSeconds(.3f);
+            Animation.Instance.TongueDeleteAnim(GetLastChild(tiles[j].transform),.1f);
+        }
+
+        if (renderer != null && renderer.material != null)
+        {
+            renderer.material.color = Color.white; 
+        }
+        
+    }
     
-    private IEnumerator DeleteNode(GameObject oldTile)
+    public IEnumerator DeleteNode(GameObject oldTile)
     {
         List<Tile> tiles = grid.NodeCount(oldTile);
-        yield return new WaitForSeconds(tiles.Count/10);
+        yield return new WaitForSeconds(tiles.Count * Consts.Count.colorCount / 10f);
         
         for (int i = tiles.Count - 1; i >= 0; i--)
         {
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(.15f);
             Transform cell = tiles[i].transform.parent;
 
-            StartCoroutine(Animation.Instance.DeleteTileAnimate(tiles[i]));
-            
+            tiles[i].transform.DOScale(Readonly.ContentValue.contentDelete, .15f);
+            yield return new WaitForSeconds(.15f);
+        
             tiles[i].gameObject.SetActive(false);
             
-            if (GetChildCount(cell) >= Consts.Count.gridMinChild)
+             if (GetChildCount(cell) >= Consts.Count.gridMinChild)
             {
                 Transform tile = GetLastChild(cell);
                 Transform content = tile.GetChild(tile.childCount - 1);
                 
-                StartCoroutine(Animation.Instance.CreateContentAnimate(content));
+                content.transform.DOScale(Readonly.ContentValue.contentOriginalSize, .05f);
+                yield return new WaitForSeconds(.05f);
                 content.gameObject.SetActive(true);
+                yield return new WaitForSeconds(.001f);
+                Animation.Instance.TongueDeleteAnim(content,.01f);
             }
         }
+
+       
     }
 
     private GameObject GetObjectAtCoordinates(Vector3Int coordinates)
