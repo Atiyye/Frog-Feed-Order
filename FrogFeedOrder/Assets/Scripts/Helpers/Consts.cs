@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public static class Consts 
 {
     public struct Type
@@ -40,9 +42,9 @@ public static class Consts
         public const string yellow = "Yellow";
     }
     
-    public struct FunctionType
+    public struct TongueValue
     {
-        public const string create = "Create";
-        public const string delete = "Delete";
+        public static readonly Vector3 create = new Vector3(22f, 5f, 2f);
+        public static readonly Vector3 delete = new Vector3(22f, 5f, 2f);
     }
 }

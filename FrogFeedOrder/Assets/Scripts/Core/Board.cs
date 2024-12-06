@@ -59,7 +59,8 @@ public class Board : MonoBehaviour
         }
         if (!isBreak)
         {
-          //  StartCoroutine(DeleteNode(tile));
+            StartCoroutine(Animation.Instance.ContentGatheringAnimate(tile));
+            //  StartCoroutine(DeleteNode(tile));
         }
     }
 
@@ -78,7 +79,7 @@ public class Board : MonoBehaviour
                 nodeDirection = int.Parse(GetLastChild(newTile).gameObject.transform.localRotation.eulerAngles.y.ToString());
                 nodeDirection = (Consts.Rotate.left + nodeDirection) % 360;
             }
-            StartCoroutine(Animation.Instance.ContentsGrowthAnimate(newTile.gameObject,nodeDirection));
+            StartCoroutine(Animation.Instance.ContentsGrowthAnimate(newTile.gameObject));
             return true;
         }
         else
@@ -115,8 +116,9 @@ public class Board : MonoBehaviour
         {
             yield return new WaitForSeconds(.2f);
             Transform cell = tiles[i].transform.parent;
-            
+
             StartCoroutine(Animation.Instance.DeleteTileAnimate(tiles[i]));
+            
             tiles[i].gameObject.SetActive(false);
             
             if (GetChildCount(cell) >= Consts.Count.gridMinChild)
