@@ -30,6 +30,7 @@ public class Board : MonoBehaviour
     public void FeedFrog(int direction,GameObject tile)
     {
         nodeDirection = direction;
+        Tongue.Instance.direction = direction;
         newCoordinates = coordinates;
         
         cell = tile.transform.parent.gameObject;
@@ -86,8 +87,6 @@ public class Board : MonoBehaviour
             newCoordinates = coordinates;
             return false; 
         } 
-        
-        
     }
 
     private Vector3Int GetCoord(int direction, bool isFrog)
@@ -131,8 +130,6 @@ public class Board : MonoBehaviour
         }
     }
 
-   
-  
     private GameObject GetObjectAtCoordinates(Vector3Int coordinates)
     {
         foreach (var cell in grid.cells)

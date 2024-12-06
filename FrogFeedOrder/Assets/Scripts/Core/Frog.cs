@@ -20,4 +20,5 @@ public class Frog : MonoBehaviour
          Board.Instance.FeedFrog(direction,tile);
       });
    }
+   
 }

@@ -39,4 +39,10 @@ public static class Consts
         public const string red = "Red";
         public const string yellow = "Yellow";
     }
+    
+    public struct FunctionType
+    {
+        public const string create = "Create";
+        public const string delete = "Delete";
+    }
 }

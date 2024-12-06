@@ -34,11 +34,13 @@ public class Animation : MonoBehaviour
             
             if (AnimObj.name == Consts.Type.arrow)
             {
-                nodeDirection = (nodeDirection + Consts.Rotate.left) % 360;
+                Tongue.Instance.direction = int.Parse(AnimObj.transform.localRotation.eulerAngles.y.ToString());
+                Tongue.Instance.direction = (Consts.Rotate.left - Tongue.Instance.direction) % 360;
             }
             
             if (i != tiles.Count - 1)
-                StickOutTongue(AnimObj, nodeDirection);
+                TongueAnim(AnimObj);
+            
             if (AnimObj.name != Consts.Type.arrow)
             {
                 AnimObj.DOScale(1f, animationDuration)
@@ -52,38 +54,29 @@ public class Animation : MonoBehaviour
         tiles.Clear();
     }
 
-    private void StickOutTongue(Transform content,int nodeDirection)
+    private void TongueAnim(Transform content)
     {
         Transform tongue = content.GetChild(content.childCount - 1);
-       
-        
-       if (content.name == Consts.Type.grape)
-       {
-           tongue.transform.localRotation =
-               Quaternion.Euler(Consts.Rotate.left, nodeDirection % 360, 0);
-       }
+   
+        Tongue.Instance.UpdateTongue(content.name,content);
 
         if (content.name != Consts.Type.arrow)
-        {
-            tongue.DOScale(0, animationDuration)
-                .SetEase(Ease.InOutQuad)
-                .OnComplete(() =>
-                {
-                    tongue.gameObject.SetActive(true);
-                    tongue.DOScale(new Vector3(22f, 5f,2f), animationDuration);
-                });
-        }
+            Anim(tongue, new Vector3(0f, 0f, 0f),
+                new Vector3(22f, 5f,2f), Consts.FunctionType.create);
         else
-        {
-            tongue.DOScale(0, animationDuration)
-                .SetEase(Ease.InOutQuad)
-                .OnComplete(() =>
-                {
-                    tongue.gameObject.SetActive(true);
-                    tongue.DOScale(new Vector3(1f,.2f,.2f), animationDuration);
-                });
-        }
+            Anim(tongue, new Vector3(0f, 0f, 0f), 
+                new Vector3(1f, .2f, .2f), Consts.FunctionType.create);
         
+    }
+
+    private void Anim(Transform animObj,Vector3 startValue ,Vector3 endValue , string functionType)
+    {
+        animObj.DOScale(startValue, animationDuration)
+            .SetEase(Ease.InOutQuad)
+            .OnComplete(() =>
+            {
+                animObj.DOScale(endValue, animationDuration);
+            });
     }
     
     public IEnumerator DeleteTileAnimate(Tile tile)
