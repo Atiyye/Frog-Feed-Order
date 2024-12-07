@@ -11,6 +11,7 @@ public static class Readonly
     public struct ContentValue
     {
         public static readonly Vector3 contentOriginalSize = new Vector3(.75f, .75f, .75f);
+        public static readonly Vector3 arrowOriginalSize = new Vector3(18, 18, 18);
         public static readonly Vector3 contentBigSize = new Vector3(1f, 1f, 1f);
         public static readonly Vector3 contentDelete = new Vector3(0, 0, 0);
     }

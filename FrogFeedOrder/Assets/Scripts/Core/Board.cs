@@ -152,8 +152,12 @@ public class Board : MonoBehaviour
             {
                 Transform tile = GetLastChild(cell);
                 Transform content = tile.GetChild(tile.childCount - 1);
+
+                if (content.name == Consts.Type.arrow)
+                    content.transform.DOScale(Readonly.ContentValue.arrowOriginalSize, .05f);
+                else
+                    content.transform.DOScale(Readonly.ContentValue.contentOriginalSize, .05f);
                 
-                content.transform.DOScale(Readonly.ContentValue.contentOriginalSize, .05f);
                 yield return new WaitForSeconds(.05f);
                 content.gameObject.SetActive(true);
                 yield return new WaitForSeconds(.001f);

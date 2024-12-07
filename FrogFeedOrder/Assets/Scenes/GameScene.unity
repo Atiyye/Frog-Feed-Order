@@ -2179,6 +2179,7 @@ MonoBehaviour:
   - {fileID: 5748107622827154896, guid: da77f849bedf7764f908631e1244fc46, type: 3}
   - {fileID: 2349025431114652426, guid: 79b27e52341ac85419911f583073a385, type: 3}
   - {fileID: 3384385260986988468, guid: 24f6d634b9235084e97ba94aae402cad, type: 3}
+  - {fileID: 3384385260986988468, guid: ebe3f860ae2d7704ca92092de1f543bb, type: 3}
   currentLevelIndex: 0
 --- !u!4 &1635807828
 Transform:
