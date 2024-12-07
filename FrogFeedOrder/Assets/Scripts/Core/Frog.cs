@@ -15,9 +15,17 @@ public class Frog : MonoBehaviour
       direction = int.Parse(gameObject.transform.localRotation.eulerAngles.y.ToString());
       tile = gameObject.transform.parent.gameObject;
       
+      
       frogBtn.onClick.AddListener(() =>
       {
-         Board.Instance.FeedFrog(direction,tile);
+         int moves = GameManager.Instance.moves;
+
+         if (moves > 0)
+         {
+            GameManager.Instance.moves--;
+            GameUi.Instance.UpdateMovesText(GameManager.Instance.moves);
+            Board.Instance.FeedFrog(direction,tile);
+         }
       });
    }
    

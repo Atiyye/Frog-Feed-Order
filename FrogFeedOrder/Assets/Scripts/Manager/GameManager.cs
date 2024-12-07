@@ -5,17 +5,51 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int levelCount;
-    [SerializeField] private List<GameObject> levels;
+    public static GameManager Instance { get;  set; }
     
-    void Start()
+    private TileGrid grid;
+    public int moves;
+    public int frogs;
+    
+    private void Awake()
     {
-        CreateLevel();
+        Instance = this;
     }
 
-    private void CreateLevel()
+    void Start()
     {
-        Instantiate(LevelManager.Instance.levelList[levelCount], LevelManager.Instance.gameObject.transform);
+        LevelManager.Instance.LoadCurrentLevel();
+        moves = (LevelManager.Instance.currentLevelIndex + 1) * 2 + Consts.Count.colorCount;
+        frogs = Consts.Count.colorCount - 1;
+        GameUi.Instance.UpdateLevelText(LevelManager.Instance.currentLevelIndex);
+        GameUi.Instance.UpdateMovesText(moves);
+    }
+    
+    public void LevelComplete()
+    {
+        LevelCompleteUi.Instance.LevelComplete(); 
+    }
 
+    public void LevelFailed()
+    {
+        LevelFailedUi.Instance.LevelFailed(); 
+    }
+    
+    public void OnLevelComplete()
+    {
+        LevelManager.Instance.LoadNextLevel(); 
+        moves = (LevelManager.Instance.currentLevelIndex + 1) * 2 + Consts.Count.colorCount;
+        frogs = Consts.Count.colorCount - 1;
+        GameUi.Instance.UpdateLevelText(LevelManager.Instance.currentLevelIndex);
+        GameUi.Instance.UpdateMovesText(moves);
+    }
+
+    public void OnLevelFailed()
+    {
+        LevelManager.Instance.RestartLevel(); 
+        moves = (LevelManager.Instance.currentLevelIndex + 1) * 2 + Consts.Count.colorCount;
+        frogs = Consts.Count.colorCount - 1;
+        GameUi.Instance.UpdateLevelText(LevelManager.Instance.currentLevelIndex);
+        GameUi.Instance.UpdateMovesText(moves);
     }
 }

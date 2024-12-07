@@ -62,6 +62,7 @@ public class Board : MonoBehaviour
         {
             StartCoroutine(Animation.Instance.ContentGatheringAnimate(tile));
             StartCoroutine(DeleteNode(tile));
+          
         }
     }
 
@@ -159,7 +160,15 @@ public class Board : MonoBehaviour
                 Animation.Instance.TongueDeleteAnim(content,.01f);
             }
         }
-
+        
+        if (GameManager.Instance.frogs > 0) 
+        {
+            Debug.LogError(GameManager.Instance.frogs);
+            GameManager.Instance.frogs--;
+                
+        }
+        else
+            GameManager.Instance.LevelComplete();
        
     }
 
