@@ -112,7 +112,7 @@ public class Board : MonoBehaviour
     private IEnumerator WrongFrog(Transform newTile,int i,GameObject tile)
     {
         List<Tile> tiles = grid.NodeCount(tile);
-        yield return new WaitForSeconds(i - .5f);
+        yield return new WaitForSeconds(i - Consts.Second.wrongFrog);
         Renderer renderer = GetLastChild(newTile).GetComponent<Renderer>();
 
         if (renderer != null && renderer.material != null)
@@ -122,7 +122,7 @@ public class Board : MonoBehaviour
        
         for (int j = i; j >= 0; j--)
         {
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(Consts.Second.deleteTongue);
             Animation.Instance.TongueDeleteAnim(GetLastChild(tiles[j].transform),.1f);
         }
 
@@ -136,15 +136,15 @@ public class Board : MonoBehaviour
     public IEnumerator DeleteNode(GameObject oldTile)
     {
         List<Tile> tiles = grid.NodeCount(oldTile);
-        yield return new WaitForSeconds(tiles.Count * Consts.Count.colorCount / 10f);
+        yield return new WaitForSeconds(tiles.Count * Consts.Count.colorCount / Consts.Second.deleteNode);
         
         for (int i = tiles.Count - 1; i >= 0; i--)
         {
-            yield return new WaitForSeconds(.08f);
+            yield return new WaitForSeconds(Consts.Second.delete);
             Transform cell = tiles[i].transform.parent;
 
-            tiles[i].transform.DOScale(Readonly.ContentValue.contentDelete, .07f);
-            yield return new WaitForSeconds(.08f);
+            tiles[i].transform.DOScale(Readonly.ContentValue.contentDelete, Consts.Second.contentDelete);
+            yield return new WaitForSeconds(Consts.Second.delete);
         
             tiles[i].gameObject.SetActive(false);
             
@@ -154,14 +154,14 @@ public class Board : MonoBehaviour
                 Transform content = tile.GetChild(tile.childCount - 1);
 
                 if (content.name == Consts.Type.arrow)
-                    content.transform.DOScale(Readonly.ContentValue.arrowOriginalSize, .07f);
+                    content.transform.DOScale(Readonly.ContentValue.arrowOriginalSize, Consts.Second.contentDelete);
                 else
-                    content.transform.DOScale(Readonly.ContentValue.contentOriginalSize, .07f);
+                    content.transform.DOScale(Readonly.ContentValue.contentOriginalSize, Consts.Second.contentDelete);
                 
-                yield return new WaitForSeconds(.07f);
+                yield return new WaitForSeconds(Consts.Second.contentDelete);
                 content.gameObject.SetActive(true);
                 yield return new WaitForSeconds(.001f);
-                Animation.Instance.TongueDeleteAnim(content,.01f);
+                Animation.Instance.TongueDeleteAnim(content,Consts.Second.tongueDelete);
             }
         }
         

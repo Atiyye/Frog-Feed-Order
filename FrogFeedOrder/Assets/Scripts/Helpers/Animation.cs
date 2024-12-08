@@ -34,7 +34,7 @@ public class Animation : MonoBehaviour
         for (int i = 0; i < tiles.Count; i++)
         {
             Transform AnimObj = tiles[i].transform.GetChild(tiles[i].transform.childCount - 1);
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(Consts.Second.contentsGrowth);
 
             if (i != tiles.Count - 1)
                 TongueCreateAnim(AnimObj);
@@ -52,56 +52,62 @@ public class Animation : MonoBehaviour
     public IEnumerator ContentGatheringAnimate(GameObject tile)
     {
         List<Tile> tiles = grid.NodeCount(tile);
-        yield return new WaitForSeconds(tiles.Count * Consts.Count.colorCount / 10f);
+        yield return new WaitForSeconds(tiles.Count * Consts.Count.colorCount / Consts.Second.contentGathering);
 
         for (int i = 0; i < tiles.Count; i++)
         {
             contents.Add(Board.Instance.GetLastChild(tiles[i].transform).name);
         }
 
-  /*      if (contents.Contains(Consts.Type.arrow))
-        {
-            int index = contents.IndexOf(Consts.Type.arrow);
-            Transform targetNew = tiles[index].transform;
+        #region old animation code
 
-            for (int i = contents.Count - 1; i >= 0; i--)
-            {
-                Transform target = tiles[0].transform;
-                Transform content = Board.Instance.GetLastChild(tiles[i].transform);
-
-                if (contents.Contains(Consts.Type.arrow))
-                {
-                    if (content.name == Consts.Type.arrow)
-                    {
-                        targetNew = target;
-                        TongueDeleteAnim(content,.01f);
-                        yield return new WaitForSeconds(1);
-                    }
-
-                    TongueDeleteAnim(content,.01f);
-                    content.DOMove(targetNew.position, moveDuration).OnComplete(() =>
-                    {
-                        content.DOMove(target.position, contentDeleteDuration)
-                            .OnComplete(() =>
-                            {
-                                TongueDeleteAnim(content,.01f);
-                                target.DOScale(0, contentDeleteDuration);
-                                content.DOScale(0, contentDeleteDuration);
-                            });
-                    });
-                }
-            }
-
-            contents.Clear();
-      
-        else
+        /*      if (contents.Contains(Consts.Type.arrow))
        {
-         }*/
+           int index = contents.IndexOf(Consts.Type.arrow);
+           Transform targetNew = tiles[index].transform;
+
+           for (int i = contents.Count - 1; i >= 0; i--)
+           {
+               Transform target = tiles[0].transform;
+               Transform content = Board.Instance.GetLastChild(tiles[i].transform);
+
+               if (contents.Contains(Consts.Type.arrow))
+               {
+                   if (content.name == Consts.Type.arrow)
+                   {
+                       targetNew = target;
+                       TongueDeleteAnim(content,.01f);
+                       yield return new WaitForSeconds(1);
+                   }
+
+                   TongueDeleteAnim(content,.01f);
+                   content.DOMove(targetNew.position, moveDuration).OnComplete(() =>
+                   {
+                       content.DOMove(target.position, contentDeleteDuration)
+                           .OnComplete(() =>
+                           {
+                               TongueDeleteAnim(content,.01f);
+                               target.DOScale(0, contentDeleteDuration);
+                               content.DOScale(0, contentDeleteDuration);
+                           });
+                   });
+               }
+           }
+
+           contents.Clear();
+
+       else
+      {
+        }*/
+
+        #endregion
+
+ 
             for (int i = 0; i < tiles.Count; i++)
             {
                 Transform target = tiles[0].transform;
                 Transform content = Board.Instance.GetLastChild(tiles[i].transform);
-                TongueDeleteAnim(content,.01f);
+                TongueDeleteAnim(content,Consts.Second.tongueDelete);
                 content.DOMove(target.position, moveDuration)
                     .OnComplete(() =>
                     {

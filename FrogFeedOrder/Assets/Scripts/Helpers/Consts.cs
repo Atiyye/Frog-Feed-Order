@@ -16,22 +16,12 @@ public static class Consts
         public const int gridMinChild = 2;
         
     }
-    public struct PosNumber
-    {
-        public const float yPos = 0.02f;
-        public const float zPos = 0.01f;
-    }
     public struct Rotate
     {
         public const int left = 90;
         public const int right = 270;
         public const int down = 0;
         public const int up = 180;
-    }
-    
-    public struct Coordinates
-    {
-        public const int start = 0;
     }
     
     public struct Color
@@ -41,11 +31,16 @@ public static class Consts
         public const string red = "Red";
         public const string yellow = "Yellow";
     }
-    
-    public struct TongueValue
+    public struct Second
     {
-        public static readonly Vector3 create = new Vector3(22f, 5f, 2f);
-        public static readonly Vector3 delete = new Vector3(22f, 5f, 2f);
+        public const float contentsGrowth = .3f;
+        public const float contentGathering = 10f;
+        public const float tongueDelete = .01f;
+        public const float wrongFrog = .5f;
+        public const float deleteTongue = .3f;
+        public const float deleteNode = 10f;
+        public const float contentDelete = .7f;
+        public const float delete = .8f;
     }
     
     
