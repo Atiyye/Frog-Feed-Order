@@ -39,8 +39,8 @@ public static class Consts
         public const float wrongFrog = .5f;
         public const float deleteTongue = .3f;
         public const float deleteNode = 10f;
-        public const float contentDelete = .7f;
-        public const float delete = .8f;
+        public const float contentDelete = .07f;
+        public const float delete = .08f;
     }
     
     
