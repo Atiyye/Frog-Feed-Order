@@ -112,7 +112,7 @@ public class Board : MonoBehaviour
     private IEnumerator WrongFrog(Transform newTile,int i,GameObject tile)
     {
         List<Tile> tiles = grid.NodeCount(tile);
-        yield return new WaitForSeconds(i-.5f);
+        yield return new WaitForSeconds(i - .5f);
         Renderer renderer = GetLastChild(newTile).GetComponent<Renderer>();
 
         if (renderer != null && renderer.material != null)
@@ -140,11 +140,11 @@ public class Board : MonoBehaviour
         
         for (int i = tiles.Count - 1; i >= 0; i--)
         {
-            yield return new WaitForSeconds(.15f);
+            yield return new WaitForSeconds(.08f);
             Transform cell = tiles[i].transform.parent;
 
-            tiles[i].transform.DOScale(Readonly.ContentValue.contentDelete, .15f);
-            yield return new WaitForSeconds(.15f);
+            tiles[i].transform.DOScale(Readonly.ContentValue.contentDelete, .07f);
+            yield return new WaitForSeconds(.08f);
         
             tiles[i].gameObject.SetActive(false);
             
@@ -154,11 +154,11 @@ public class Board : MonoBehaviour
                 Transform content = tile.GetChild(tile.childCount - 1);
 
                 if (content.name == Consts.Type.arrow)
-                    content.transform.DOScale(Readonly.ContentValue.arrowOriginalSize, .05f);
+                    content.transform.DOScale(Readonly.ContentValue.arrowOriginalSize, .07f);
                 else
-                    content.transform.DOScale(Readonly.ContentValue.contentOriginalSize, .05f);
+                    content.transform.DOScale(Readonly.ContentValue.contentOriginalSize, .07f);
                 
-                yield return new WaitForSeconds(.05f);
+                yield return new WaitForSeconds(.07f);
                 content.gameObject.SetActive(true);
                 yield return new WaitForSeconds(.001f);
                 Animation.Instance.TongueDeleteAnim(content,.01f);

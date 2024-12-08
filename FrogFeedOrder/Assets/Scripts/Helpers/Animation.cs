@@ -59,12 +59,12 @@ public class Animation : MonoBehaviour
             contents.Add(Board.Instance.GetLastChild(tiles[i].transform).name);
         }
 
-        if (contents.Contains(Consts.Type.arrow))
+  /*      if (contents.Contains(Consts.Type.arrow))
         {
             int index = contents.IndexOf(Consts.Type.arrow);
             Transform targetNew = tiles[index].transform;
 
-            for (int i = contents.Count - 1; i > 0; i--)
+            for (int i = contents.Count - 1; i >= 0; i--)
             {
                 Transform target = tiles[0].transform;
                 Transform content = Board.Instance.GetLastChild(tiles[i].transform);
@@ -74,16 +74,17 @@ public class Animation : MonoBehaviour
                     if (content.name == Consts.Type.arrow)
                     {
                         targetNew = target;
-                        TongueDeleteAnim(content,.1f);
+                        TongueDeleteAnim(content,.01f);
                         yield return new WaitForSeconds(1);
                     }
 
-                    TongueDeleteAnim(content,.1f);
+                    TongueDeleteAnim(content,.01f);
                     content.DOMove(targetNew.position, moveDuration).OnComplete(() =>
                     {
                         content.DOMove(target.position, contentDeleteDuration)
                             .OnComplete(() =>
                             {
+                                TongueDeleteAnim(content,.01f);
                                 target.DOScale(0, contentDeleteDuration);
                                 content.DOScale(0, contentDeleteDuration);
                             });
@@ -92,14 +93,15 @@ public class Animation : MonoBehaviour
             }
 
             contents.Clear();
-        }
+      
         else
-        {
-            for (int i = 1; i < contents.Count; i++)
+       {
+         }*/
+            for (int i = 0; i < tiles.Count; i++)
             {
                 Transform target = tiles[0].transform;
                 Transform content = Board.Instance.GetLastChild(tiles[i].transform);
-                TongueDeleteAnim(content,.1f);
+                TongueDeleteAnim(content,.01f);
                 content.DOMove(target.position, moveDuration)
                     .OnComplete(() =>
                     {
@@ -109,7 +111,7 @@ public class Animation : MonoBehaviour
             }
 
             contents.Clear();
-        }
+        //}
     }
 
     private void Anim(Transform animObj, Vector3 startValue, Vector3 endValue)
